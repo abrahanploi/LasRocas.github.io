@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurante Las Rocas | Soledad</title>
+<meta name="description" content="Disfruta de platos abundantes y deliciosa comida en Restaurante Las Rocas. Pide a domicilio o visítanos en Soledad.">
+
+<style>
+:root {
+  --dark: #171713;
+  --gold: #e8a832;
+  --cream: #fff8ec;
+  --gray: #777;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: Arial, sans-serif;
+  background:var(--cream);
+  color:var(--dark);
+}
+header {
+  background:#171713;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:17px 7%;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.logo { font-size:25px; font-weight:bold; }
+.logo span { color:var(--gold); }
+nav { display:flex; gap:22px; align-items:center; }
+nav a { color:white; text-decoration:none; font-size:14px; }
+.btn {
+  display:inline-block;
+  background:var(--gold);
+  color:#171713;
+  padding:13px 20px;
+  border-radius:7px;
+  text-decoration:none;
+  font-weight:bold;
+  border:0;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover { transform:translateY(-3px); background:#ffc45c; }
+.hero {
+  min-height:570px;
+  display:flex;
+  align-items:center;
+  padding:70px 9%;
+  color:white;
+  background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.25)),
+  url('https://images.unsplash.com/photo-1547592180-85f173990554?w=1600') center/cover;
+}
+.hero-content { max-width:650px; }
+.eyebrow { color:var(--gold); font-weight:bold; letter-spacing:2px; }
+h1 { font-size:clamp(38px,6vw,65px); margin:20px 0; line-height:1.08; }
+.hero p { font-size:18px; line-height:1.7; margin-bottom:25px; }
+section { padding:75px 8%; }
+.section-title { text-align:center; margin-bottom:40px; }
+.section-title h2 { font-size:34px; margin-bottom:12px; }
+.section-title p { color:var(--gray); }
+.trust {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:#211f19;
+  color:white;
+  padding:28px 5%;
+  text-align:center;
+  gap:20px;
+}
+.trust strong { display:block; color:var(--gold); font-size:23px; margin-bottom:8px; }
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+.feature {
+  padding:30px;
+  background:white;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 5px 20px #0000000c;
+}
+.feature .emoji { font-size:38px; margin-bottom:15px; }
+.feature h3 { margin-bottom:12px; }
+.feature p { color:var(--gray); line-height:1.6; }
+.menu-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+.product {
+  background:white;
+  border-radius:13px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #00000012;
+}
+.product img {
+  width:100%;
+  height:210px;
+  object-fit:cover;
+}
+.product-info { padding:20px; }
+.product-info h3 { margin-bottom:10px; }
+.product-info p { color:var(--gray); line-height:1.5; margin-bottom:15px; }
+.price { color:#bd7a08; font-weight:bold; display:block; margin-bottom:15px; }
+.product button { width:100%; }
+.reviews {
+  background:#211f19;
+  color:white;
+}
+.reviews .section-title p { color:#ccc; }
+.review-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.review {
+  background:#302e27;
+  padding:25px;
+  border-radius:12px;
+  line-height:1.7;
+}
+.stars { color:var(--gold); margin-bottom:12px; }
+.review h3 { margin-top:15px; color:var(--gold); }
+.promise {
+  background:#fff0d6;
+  padding:30px;
+  border-left:5px solid var(--gold);
+  border-radius:8px;
+  max-width:850px;
+  margin:auto;
+  line-height:1.8;
+}
+.location-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:center;
+}
+.location-grid p { line-height:2; }
+.location-grid iframe {
+  width:100%;
+  height:320px;
+  border:0;
+  border-radius:12px;
+}
+.final-cta {
+  text-align:center;
+  background:var(--gold);
+  padding:65px 20px;
+}
+.final-cta h2 { font-size:35px; margin-bottom:15px; }
+.final-cta p { margin-bottom:25px; }
+.final-cta .btn { background:#171713; color:white; }
+footer {
+  background:#171713;
+  color:white;
+  text-align:center;
+  padding:35px 15px;
+  line-height:2;
+}
+footer a { color:var(--gold); }
+.whatsapp {
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  background:#25d366;
+  color:white;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:29px;
+  text-decoration:none;
+  z-index:200;
+  box-shadow:0 4px 15px #0004;
+}
+.cart {
+  position:fixed;
+  bottom:95px;
+  right:22px;
+  z-index:150;
+  background:#171713;
+  color:white;
+  padding:13px 18px;
+  border-radius:30px;
+  border:1px solid var(--gold);
+  cursor:pointer;
+  font-weight:bold;
+}
+@media(max-width:850px) {
+  nav { gap:10px; }
+  nav a { font-size:12px; }
+  .features,.menu-grid,.review-grid { grid-template-columns:repeat(2,1fr); }
+  .trust { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:600px) {
+  header { padding:15px 5%; }
+  .logo { font-size:20px; }
+  nav a:not(.nav-order) { display:none; }
+  .hero { min-height:520px; padding:55px 7%; }
+  section { padding:55px 6%; }
+  .features,.menu-grid,.review-grid,.location-grid { grid-template-columns:1fr; }
+  .section-title h2 { font-size:28px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LAS <span>ROCAS</span></div>
+  <nav>
+    <a href="#menu">La Carta</a>
+    <a href="#historia">Nosotros</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a class="btn nav-order" href="#menu">Pedir ahora</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">5 AÑOS EN SOLEDAD · ⭐ 4.5/5</span>
+    <h1>Porciones generosas, calidad que se siente.</h1>
+    <p>Disfruta comida deliciosa, platos abundantes y una atención que te hace volver. ¡Tenemos una mesa esperando por ti!</p>
+    <a class="btn" href="#menu">Explorar menú</a>
+    <a class="btn" href="#" onclick="pedirGeneral();return false;">Pedir a domicilio</a>
+  </div>
+</section>
+
+<div class="trust">
+  <div><strong>5 años</strong>De experiencia</div>
+  <div><strong>4.5 ★</strong>Calificación</div>
+  <div><strong>3 formas</strong>De disfrutar</div>
+  <div><strong>9:00 PM</strong>Horario de cierre</div>
+</div>
+
+<section id="historia">
+  <div class="section-title">
+    <h2>¿Por qué elegir Las Rocas?</h2>
+    <p>Mucho más que comida: una experiencia para disfrutar.</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <div class="emoji">🍟</div>
+      <h3>Porciones generosas</h3>
+      <p>Platos abundantes para disfrutar cada bocado y compartir buenos momentos.</p>
+    </div>
+    <div class="feature">
+      <div class="emoji">🍖</div>
+      <h3>Calidad en cada plato</h3>
+      <p>Preparaciones con sabor y calidad que hacen que cada visita valga la pena.</p>
+    </div>
+    <div class="feature">
+      <div class="emoji">❤️</div>
+      <h3>Atención especial</h3>
+      <p>Un equipo amable y atento que busca hacer especial cada visita.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="section-title">
+    <h2>Nuestros favoritos</h2>
+    <p>Selecciona tus platos y prepara tu pedido por WhatsApp.</p>
+  </div>
+
+  <div class="menu-grid" id="productos"></div>
+</section>
+
+<section class="reviews" id="resenas">
+  <div class="section-title">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <p>Experiencias compartidas por nuestros visitantes.</p>
+  </div>
+  <div class="review-grid">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      "Es un excelente restaurante, la atención al cliente fue la mejor dando hasta obsequio y brindando una buena atención."
+      <h3>Alfonso Graterol</h3>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      "Porciones muy generosas, el trato de los meseros es increíble amables y atentos, el precio es alto pero la calidad lo es más."
+      <h3>Sergi Martinez</h3>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      "Deliciosa la comida, atención estupenda."
+      <h3>Visitante de Google</h3>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Tu confianza es importante</h2>
+  </div>
+  <div class="promise">
+    <h3>Transparencia en cada visita</h3>
+    Queremos que tu única preocupación sea disfrutar. Nuestro equipo está atento a tus necesidades y te consulta antes de incluir cualquier cargo adicional o servicio opcional en tu cuenta.
+    <strong>Tu tranquilidad también hace parte de nuestra experiencia.</strong>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <div class="section-title">
+    <h2>¡Ven a visitarnos!</h2>
+    <p>Estamos en Soledad, Atlántico.</p>
+  </div>
+  <div class="location-grid">
+    <div>
+      <p><strong>📍 Dirección:</strong><br>CC Plaza Prado, Cl. 35 #30-15, Soledad, Atlántico.</p>
+      <p><strong>🕒 Horario:</strong><br>Todos los días hasta las 9:00 p.m.</p>
+      <p><strong>📞 Teléfono:</strong><br>301 7740016</p>
+      <p><strong>🍽️ Servicios:</strong><br>Consumo en el lugar, para llevar y domicilio.</p>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=CC+Plaza+Prado+Cl+35+30-15+Soledad+Atlantico">Cómo llegar</a>
+    </div>
+    <iframe
+      loading="lazy"
+      title="Mapa de Restaurante Las Rocas"
+      src="https://maps.google.com/maps?q=CC%20Plaza%20Prado%2C%20Soledad%2C%20Atlantico&t=&z=15&ie=UTF8&iwloc=&output=embed">
+    </iframe>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>¿Tienes antojo?</h2>
+  <p>Escríbenos y disfruta de Restaurante Las Rocas.</p>
+  <a class="btn" href="#" onclick="pedirGeneral();return false;">Pedir por WhatsApp</a>
+</section>
+</main>
+
+<footer>
+  <h2>RESTAURANTE LAS ROCAS</h2>
+  <p>Calidad, sabor y porciones generosas.</p>
+  <p>WhatsApp: 301 7740016</p>
+  <p>Soledad, Atlántico · Colombia</p>
+  <p>© 2026 Restaurante Las Rocas</p>
+</footer>
+
+<button class="cart" onclick="finalizarPedido()">
+  🛒 Mi pedido (<span id="cantidad">0</span>)
+</button>
+
+<a class="whatsapp" href="https://wa.me/573017740016?text=Hola%2C%20Restaurante%20Las%20Rocas.%20Quiero%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+
+<script>
+// Número oficial de WhatsApp del restaurante
+const TELEFONO = "573017740016";
+
+// EDITAR: reemplaza estos ejemplos con la carta y precios reales.
+const menu = [
+  {
+    nombre:"Especialidad de la casa",
+    precio:0,
+    descripcion:"Plato especial preparado al momento.",
+    imagen:"https://images.unsplash.com/photo-1544025162-d76694265947?w=700"
+  },
+  {
+    nombre:"Parrilla especial",
+    precio:0,
+    descripcion:"Una opción para disfrutar de una buena parrilla.",
+    imagen:"https://images.unsplash.com/photo-1558030006-450675393462?w=700"
+  },
+  {
+    nombre:"Papas fritas",
+    precio:0,
+    descripcion:"Crujientes y perfectas para acompañar.",
+    imagen:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=700"
+  }
+];
+
+let carrito = [];
+
+function mostrarMenu() {
+  const contenedor = document.getElementById("productos");
+
+  contenedor.innerHTML = menu.map((producto, i) => `
+    <article class="product">
+      <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
+      <div class="product-info">
+        <h3>${producto.nombre}</h3>
+        <p>${producto.descripcion}</p>
+        <span class="price">
+          ${producto.precio > 0
+            ? "$" + producto.precio.toLocaleString("es-CO")
+            : "Consultar precio"}
+        </span>
+        <button class="btn" onclick="agregar(${i})">
+          Agregar al pedido
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function agregar(indice) {
+  const producto = menu[indice];
+  const existente = carrito.find(p => p.nombre === producto.nombre);
+
+  if (existente) {
+    existente.cantidad++;
+  } else {
+    carrito.push({...producto, cantidad:1});
+  }
+
+  actualizarCarrito();
+  alert(producto.nombre + " agregado a tu pedido.");
+}
+
+function actualizarCarrito() {
+  const cantidad = carrito.reduce((total,p) => total+p.cantidad,0);
+  document.getElementById("cantidad").textContent = cantidad;
+}
+
+function pedirGeneral() {
+  const mensaje = "Hola, Restaurante Las Rocas. Quiero conocer el menú y hacer un pedido.";
+  window.open("https://wa.me/" + TELEFONO + "?text=" + encodeURIComponent(mensaje), "_blank");
+}
+
+function finalizarPedido() {
+  if (carrito.length === 0) {
+    pedirGeneral();
+    return;
+  }
+
+  const opciones = carrito.map((p,i) =>
+    `${i+1}. ${p.nombre} x ${p.cantidad}`
+  ).join("\n");
+
+  const total = carrito.reduce((s,p) => s+p.precio*p.cantidad,0);
+
+  const modalidad = prompt(
+    "¿Cómo deseas recibir tu pedido?\n1. Domicilio\n2. Recoger en el local"
+  );
+
+  if (!modalidad || !["1","2"].includes(modalidad.trim())) {
+    alert("Selecciona 1 o 2 para continuar.");
+    return;
+  }
+
+  const nombre = prompt("¿Cuál es tu nombre?");
+  if (!nombre || !nombre.trim()) return;
+
+  let direccion = "";
+  if (modalidad.trim() === "1") {
+    direccion = prompt("Escribe tu dirección de entrega:");
+    if (!direccion || !direccion.trim()) return;
+  }
+
+  const tipo = modalidad.trim() === "1" ? "Domicilio" : "Recoger en el local";
+
+  const mensaje =
+`¡Hola! Quiero realizar un pedido en Restaurante Las Rocas.
+
+Nombre: ${nombre.trim()}
+Modalidad: ${tipo}
+${direccion ? "Dirección: " + direccion.trim() : ""}
+
+Mi pedido:
+${opciones}
+
+${total > 0 ? "Subtotal de referencia: $" + total.toLocaleString("es-CO") : "Solicito confirmación de los precios."}
+
+Por favor, confirmen disponibilidad, precio final y costo de domicilio. ¡Gracias!`;
+
+  window.open(
+    "https://wa.me/" + TELEFONO + "?text=" + encodeURIComponent(mensaje),
+    "_blank"
+  );
+}
+
+mostrarMenu();
+</script>
+
+</body>
+</html>
